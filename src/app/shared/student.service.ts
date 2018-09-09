@@ -48,4 +48,8 @@ export class StudentService {
       });
   }
 
+  deleteStudent($key: string){
+    this.studentList.remove($key);
+  }
+
 }

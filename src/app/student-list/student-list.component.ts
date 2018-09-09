@@ -10,6 +10,8 @@ export class StudentListComponent implements OnInit {
 
   constructor(private studentService: StudentService) { }
   studentArray = [];
+  showDeletedMessage: boolean;
+  searchText: string ="";
 
   ngOnInit() {
     this.studentService.getStudents().subscribe(
@@ -22,6 +24,18 @@ export class StudentListComponent implements OnInit {
         });
     });
     
+  }
+
+  onDelete($key){
+    if(confirm('Are you sure to delete this student?')){
+      this.studentService.deleteStudent($key);
+      this.showDeletedMessage = true;
+      setTimeout(() => this.showDeletedMessage = false, 3000);
+    }
+  }
+
+  filterCondition(student){
+    return student.name.toLowerCase().indexOf(this.searchText.toLowerCase()) != -1;
   }
 
 }
