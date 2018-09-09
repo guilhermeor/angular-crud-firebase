@@ -11,7 +11,7 @@
     <td>{{student.age}}</td>
     <td>{{student.school}}</td>
     <td>
-      <button class="btn btn-outline-info">Edit</button>
+      <button class="btn btn-outline-info" (click)="studentService.populateForm(student)">Edit</button>
       <button class="btn btn-outline-danger">Delete</button>
     </td>
   </tr>
