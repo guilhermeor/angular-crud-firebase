@@ -22,9 +22,12 @@ export class StudentComponent implements OnInit {
     if(this.studentService.form.valid){
       if(this.studentService.form.get('$key').value == null)
         this.studentService.insertStudent(this.studentService.form.value);
-        this.showSuccessMessage = true;
-        setTimeout(() => this.showSuccessMessage = false, 3000);
+      else
+        this.studentService.updateStudent(this.studentService.form.value);
+      this.showSuccessMessage = true;
+      setTimeout(() => this.showSuccessMessage = false, 3000);
       this.submitted = false;
+      this.studentService.form.reset();
     }
   }
 

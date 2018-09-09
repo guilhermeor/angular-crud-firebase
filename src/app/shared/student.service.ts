@@ -37,4 +37,15 @@ export class StudentService {
     this.form.setValue(student);
   }
 
+  updateStudent(student){
+    this.studentList.update(student.$key,
+      {
+        name: student.name,
+        age: student.age,
+        email: student.email,
+        mobile: student.mobile,
+        school: student.school        
+      });
+  }
+
 }
