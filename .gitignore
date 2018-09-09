@@ -9,7 +9,7 @@
 /node_modules
 
 #environments keys
-/src/environments
+**/src/environments/
 
 # IDEs and editors
 /.idea
