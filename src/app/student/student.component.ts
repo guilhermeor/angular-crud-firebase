@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import {StudentService} from '../shared/student.service';
+
 @Component({
   selector: 'app-student',
   templateUrl: './student.component.html',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StudentComponent implements OnInit {
 
-  constructor() { }
+  constructor(private studentService: StudentService) { }
+  submitted: boolean;
+  formControls = this.studentService.form.controls;
 
   ngOnInit() {
+  }
+
+  onSubmit(){
+    this.submitted = true;
+    if(this.studentService.form.valid){
+    //if(this.studentService.form.get('$key').value == null)
+    this.submitted = false;
+    }
   }
 
 }

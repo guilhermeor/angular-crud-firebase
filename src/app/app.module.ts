@@ -1,9 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {ReactiveFormsModule} from "@angular/forms";
 
 import { AppComponent } from './app.component';
 import { StudentComponent } from './student/student.component';
 import { StudentListComponent } from './student-list/student-list.component';
+import {StudentService} from './shared/student.service';
 
 @NgModule({
   declarations: [
@@ -12,9 +14,10 @@ import { StudentListComponent } from './student-list/student-list.component';
     StudentListComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [StudentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
