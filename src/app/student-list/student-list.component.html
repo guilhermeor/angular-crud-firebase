@@ -1,3 +1,19 @@
-<p>
-  student-list works!
-</p>
+<table class="table table-sm">
+<thead>
+  <th>Name</th>
+  <th>Age</th>
+  <th>School</th>
+  <th></th>
+</thead>
+<ng-container *ngFor="let student of studentArray">
+  <tr class="table">
+    <td>{{student.name}}</td>
+    <td>{{student.age}}</td>
+    <td>{{student.school}}</td>
+    <td>
+      <button class="btn btn-outline-info">Edit</button>
+      <button class="btn btn-outline-danger">Delete</button>
+    </td>
+  </tr>
+</ng-container>
+</table>

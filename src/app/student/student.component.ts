@@ -11,6 +11,7 @@ export class StudentComponent implements OnInit {
 
   constructor(private studentService: StudentService) { }
   submitted: boolean;
+  showSuccessMessage: boolean;
   formControls = this.studentService.form.controls;
 
   ngOnInit() {
@@ -19,8 +20,11 @@ export class StudentComponent implements OnInit {
   onSubmit(){
     this.submitted = true;
     if(this.studentService.form.valid){
-    //if(this.studentService.form.get('$key').value == null)
-    this.submitted = false;
+      if(this.studentService.form.get('$key').value == null)
+        this.studentService.insertStudent(this.studentService.form.value);
+        this.showSuccessMessage = true;
+        setTimeout(() => this.showSuccessMessage = false, 3000);
+      this.submitted = false;
     }
   }
 

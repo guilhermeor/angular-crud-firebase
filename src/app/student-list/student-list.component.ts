@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StudentService } from '../shared/student.service';
 
 @Component({
   selector: 'app-student-list',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StudentListComponent implements OnInit {
 
-  constructor() { }
+  constructor(private studentService: StudentService) { }
+  studentArray = [];
 
   ngOnInit() {
+    this.studentService.getStudents().subscribe(
+      list => {
+        this.studentArray = list.map(item => {
+          return {
+            $key: item.key,
+            ...item.payload.val()
+          }
+        });
+    });
+    
   }
 
 }
